@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+  <g id="Group_141" data-name="Group 141" transform="translate(-1815 -918)">
+    <g id="Rectangle_50" data-name="Rectangle 50" transform="translate(1815 918)" fill="#fff" stroke="#181e29" stroke-width="1">
+      <rect width="14" height="14" rx="7" stroke="none"/>
+      <rect x="0.5" y="0.5" width="13" height="13" rx="6.5" fill="none"/>
+    </g>
+    <g id="smile_1_" data-name="smile (1)" transform="translate(1818.111 922.667)">
+      <g id="Group_131" data-name="Group 131" transform="translate(0 0)">
+        <g id="Group_130" data-name="Group 130">
+          <circle id="Ellipse_43" data-name="Ellipse 43" cx="1.132" cy="1.132" r="1.132" fill="#181e29"/>
+        </g>
+      </g>
+      <g id="Group_133" data-name="Group 133" transform="translate(5.659 0)">
+        <g id="Group_132" data-name="Group 132">
+          <circle id="Ellipse_44" data-name="Ellipse 44" cx="1.132" cy="1.132" r="1.132" fill="#181e29"/>
+        </g>
+      </g>
+      <g id="Group_135" data-name="Group 135" transform="translate(1.682 3.948)">
+        <g id="Group_134" data-name="Group 134">
+          <path id="Path_228" data-name="Path 228" d="M174.635,289.977a.566.566,0,0,0-.792-.115l-.032.025h0a2.278,2.278,0,0,1-2.687,0,.566.566,0,0,0-.74.856l.032.025a3.379,3.379,0,0,0,4.1,0A.566.566,0,0,0,174.635,289.977Z" transform="translate(-170.189 -289.75)" fill="#181e29"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

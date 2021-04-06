@@ -1,0 +1,233 @@
+/* html input range styling */
+
+/* default */
+input[type='range'] {
+  width: 100%;
+}
+
+/* plugin theme  */
+
+.html-inupt-range {
+  position: relative;
+  height: 15px;
+}
+
+.html-inupt-range input[type='range'] {
+  -webkit-appearance: none;
+  height: 6px;
+  margin: 0;
+  background: #a29bfe;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.24);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.html-inupt-range input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.24);
+  background-image: linear-gradient(to bottom, #6c5ce7 0, #6c5ce7 100%);
+  border-radius: 50%;
+}
+
+.html-input-range-custom input[type='range'] {
+  position: relative;
+  z-index: 99;
+  opacity: 0;
+}
+
+.html-input-range-custom .hir-tracker-bg,
+.html-input-range-custom .hir-tracker-bg::after,
+.html-input-range-custom .hir-tracker-bg::before {
+  position: absolute;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.24);
+}
+
+.html-input-range-custom .hir-tracker-bg {
+  top: 10px;
+  left: -7px;
+  width: calc(100% + 15px);
+  height: 6px;
+  background-color: #a29bfe;
+  border-radius: 5px;
+}
+
+.html-input-range-custom .hir-tracker-bg::after,
+.html-input-range-custom .hir-tracker-bg::before {
+  content: '';
+  z-index: 1;
+  top: -4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #a29bfe;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.24);
+}
+
+.html-input-range-custom .hir-tracker-bg::before {
+  left: 0;
+}
+
+.html-input-range-custom .hir-tracker-bg::after {
+  right: 0;
+}
+
+.html-input-range-custom .hir-tracker-thumb,
+.html-input-range-custom .hir-tracker-thumb::after {
+  position: absolute;
+  background-color: #6c5ce7;
+}
+
+.html-input-range-custom .hir-tracker-thumb {
+  top: 10px;
+  left: 0;
+  width: 0;
+  height: 6px;
+  transition: width 150ms linear;
+}
+
+.html-input-range-custom .hir-tracker-thumb::after {
+  content: '';
+  z-index: 2;
+  top: -4px;
+  right: -7px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.html-inupt-range .tooltip,
+.html-inupt-range .tooltip::after,
+.html-inupt-range .tooltip::before {
+  position: absolute;
+}
+
+.html-inupt-range .tooltip {
+  z-index: 0;
+  top: -32px;
+  left: 0;
+  padding: 5px 12px;
+  transform: translateX(-50%);
+  font-size: 14px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.24);
+  border-radius: 10px;
+  transition: left 100ms linear;
+}
+
+.html-inupt-range .tooltip::after,
+.html-inupt-range .tooltip::before {
+  content: '';
+  width: 0;
+  height: 0;
+}
+
+.html-inupt-range .tooltip::after {
+  bottom: -4px;
+  left: calc(50% - 4px);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #fff;
+}
+
+.html-inupt-range .tooltip::before {
+  bottom: -5px;
+  left: calc(50% - 5px);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #f1f1f1;
+}
+
+.html-input-range-custom .hir-labels {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.html-input-range-custom .hir-labels {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+}
+
+[class*='col-'] {
+  float: left;
+}
+
+.col-10 {
+  width: 10%;
+}
+
+.col-9 {
+  width: 11.1111111111%;
+}
+
+.col-8 {
+  width: 12.5%;
+}
+
+.col-7 {
+  width: 14.285714286%;
+}
+
+.col-6 {
+  width: 16.666666667%;
+}
+
+.col-5 {
+  width: 20%;
+}
+
+.col-4 {
+  width: 25%;
+}
+
+.col-3 {
+  width: 33.333333%;
+}
+
+.col-2 {
+  width: 50%;
+}
+
+.col-1 {
+  width: 100%;
+}
+
+.html-input-range-custom .hir-labels li {
+  position: relative;
+  height: 6px;
+}
+
+.html-input-range-custom .hir-labels li::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: -7px;
+  width: 14px;
+  height: 14px;
+  background-color: #fff;
+  border: 1px solid #a29bfe;
+  border-radius: 50%;
+}
+
+.html-input-range-custom .hir-labels li::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.html-input-range-custom .hir-labels li:last-child::after {
+  display: none;
+}
+
+/* helper styles */
+
+input[type='range'] + p {
+  font-size: 12px;
+  color: #666;
+}

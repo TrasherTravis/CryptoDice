@@ -1,0 +1,548 @@
+/*OWL Carousel arrow*/
+@media (max-width: 1320px) {
+  header .logo a {
+    max-width: 150px;
+    width: 150px;
+    display: block;
+  }
+}
+
+/*Mini Laptop view*/
+@media (min-width: 992px) and (max-width: 1199px) {
+  header .logo a {
+    max-width: 120px;
+    width: 120px;
+    display: block;
+  }
+  .chat-show body,
+  .chat-show header {
+    padding-right: 350px;
+  }
+
+  .chat-show.auto-bet-show body,
+  .chat-show.auto-bet-show header {
+    padding-right: 250px;
+  }
+  .chat-show.auto-bet-show body {
+    padding-left: 250px;
+  }
+  .chat-show.auto-bet-show header {
+    left: 250px;
+  }
+  .chat-show.auto-bet-show .auto-bet-wrap,
+  .chat-show.auto-bet-show .chat-wrap {
+    width: 250px;
+  }
+  .auto-bet-show header {
+    padding-left: 0px;
+    left: 350px;
+  }
+  .chat-show header .logo a {
+    max-width: 120px;
+    width: 120px;
+    display: block;
+  }
+  .chat-show .race-btn {
+    padding: 0 16px;
+    line-height: 35px;
+  }
+  .chat-show .auth-buttons {
+    padding-right: 0px;
+  }
+  .chat-show .login-btn {
+    padding: 0 16px;
+    line-height: 35px;
+  }
+
+  .chat-show .signup-btn {
+    padding: 0 16px;
+    line-height: 35px;
+  }
+  .chat-show .header-price-item h4 {
+    font-size: 14px;
+  }
+
+  .chat-show .header-price-item h6 {
+    font-size: 11px;
+  }
+  .footer-price h4 {
+    font-size: 16px;
+  }
+}
+
+/*Tablet view*/
+@media (min-width: 768px) and (max-width: 991px) {
+  .auto-bet-show header {
+    padding-left: 0;
+    left: 250px;
+  }
+  .auto-bet-show body {
+    padding-left: 250px;
+  }
+  .auto-bet-show .auto-bet-wrap {
+    width: 250px;
+  }
+  .chat-show body,
+  .chat-show header {
+    padding-right: 250px;
+  }
+  .chat-show.auto-bet-show .auto-bet-wrap {
+    width: 100%;
+    border-left: 0;
+    padding: 30px 0 30px;
+    margin-top: 100px;
+    position: unset;
+    border-right-width: 0px;
+    border-radius: 12px;
+    overflow-y: auto;
+  }
+  .chat-show.auto-bet-show body {
+    padding-left: 0;
+  }
+  .chat-show.auto-bet-show header {
+    left: 0px;
+  }
+  .chat-wrap {
+    width: 250px;
+  }
+
+  header .logo a {
+    max-width: 120px;
+    width: 120px;
+    display: block;
+  }
+
+  body {
+    font-size: 14px;
+    padding-top: 81px;
+  }
+
+  .race-btn {
+    padding: 0 16px;
+    line-height: 35px;
+  }
+  .auth-buttons {
+    padding-right: 0px;
+  }
+  .login-btn {
+    padding: 0 16px;
+    line-height: 35px;
+  }
+
+  .signup-btn {
+    padding: 0 16px;
+    line-height: 35px;
+  }
+  .header-price-item h4 {
+    font-size: 14px;
+  }
+
+  .header-price-item h6 {
+    font-size: 11px;
+  }
+
+  .profile-drop .dropdown-toggle {
+    padding: 0 15px;
+    line-height: 40px;
+  }
+
+  header {
+    padding: 18px 0;
+  }
+
+  .r-number-label span {
+    font-size: 15px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  section {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .big-number {
+    font-size: 110px;
+  }
+
+  .box {
+    padding: 20px;
+  }
+
+  html .btn {
+    line-height: 44px;
+  }
+
+  .wins-list .item {
+    padding: 10px;
+  }
+
+  .main-range {
+    margin: 40px 40px 0;
+  }
+
+  .table_tab_nav .nav-tabs .nav-item + .nav-item {
+    margin-left: 50px;
+  }
+
+  html .table {
+    font-size: 13px;
+  }
+
+  .footer-price h6 {
+    font-size: 13px;
+  }
+
+  .footer-price h4 {
+    font-size: 16px;
+  }
+
+  .footer-price img {
+    max-width: 30px;
+  }
+
+  .footer-price {
+    margin-top: 20px;
+    padding: 15px 15px 15px 55px;
+  }
+
+  footer h3 {
+    font-size: 16px;
+    margin: 0 0 20px;
+  }
+
+  .big-number * {
+    width: 70px !important;
+  }
+}
+
+/*Mobile view*/
+@media (max-width: 767px) {
+  .modal {
+    margin-top: 80px;
+  }
+  .chat-show body,
+  .chat-show header {
+    padding-right: 0;
+  }
+
+  .auto-bet-show body,
+  .auto-bet-show header {
+    padding-left: 0;
+  }
+  .auto-bet-show header {
+    left: 0px;
+  }
+  .auto-bet-wrap {
+    border-right-width: 0px;
+    border-radius: 12px;
+    overflow-y: auto;
+  }
+  body {
+    font-size: 13px;
+    padding-top: 155px;
+  }
+  header .logo a {
+    max-width: 120px;
+    width: 120px;
+    display: block;
+  }
+
+  body {
+    font-size: 14px;
+    padding-top: 81px;
+  }
+
+  .race-btn {
+    padding: 0 16px;
+    line-height: 35px;
+  }
+  .auth-buttons {
+    padding-right: 0px;
+  }
+  .login-btn {
+    padding: 0 16px;
+    line-height: 35px;
+  }
+
+  .signup-btn {
+    padding: 0 16px;
+    line-height: 35px;
+  }
+  .header-price-item h4 {
+    font-size: 14px;
+  }
+
+  .header-price-item h6 {
+    font-size: 11px;
+  }
+
+  .r-number-label span {
+    line-height: 35px;
+    padding: 0px 25px;
+    font-size: 12px;
+    border-radius: 0 0 14px 14px;
+  }
+
+  section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .big-number {
+    font-size: 80px;
+    margin: 0 0 30px;
+  }
+
+  .tab_nav .nav-tabs .nav-item .nav-link {
+    padding: 0 20px;
+    line-height: 42px;
+    font-weight: 600;
+    min-width: 110px;
+    font-size: 15px;
+  }
+
+  .tab_nav {
+    margin: 0 0 22px;
+  }
+
+  .box {
+    border-radius: 12px;
+    padding: 14px;
+    margin: 0 0 15px;
+  }
+
+  .bet-list {
+    margin: 0 0 20px;
+    padding: 16px;
+  }
+
+  .bet-list .item + .item:after {
+    right: -16px;
+  }
+
+  html .form-group {
+    margin-bottom: 15px;
+  }
+
+  html .btn {
+    font-size: 15px;
+    line-height: 40px;
+  }
+
+  .submit-btn-wrap {
+    margin-top: 25px;
+  }
+
+  .main-range {
+    margin: 30px 20px;
+  }
+
+  .main-range.html-input-range-custom .hir-tracker-thumb::after {
+    width: 65px;
+    height: 65px;
+    top: -28px;
+    right: -32px;
+    background-size: 100% auto;
+  }
+
+  .main-range.html-inupt-range .tooltip {
+    top: 35px;
+    width: 90px;
+    line-height: 30px;
+    font-size: 11px;
+  }
+
+  .table_tab_nav .nav-tabs .nav-link {
+    line-height: 50px;
+    font-size: 14px;
+  }
+
+  .table_tab_nav .nav-tabs .nav-item + .nav-item {
+    margin-left: 10px;
+  }
+
+  .table_tab_nav {
+    margin: 0 0 20px;
+  }
+
+  .cust-table-head {
+    padding: 0px 15px;
+    white-space: nowrap;
+  }
+
+  .cust-table-body {
+    padding: 15px;
+    border-radius: 15px;
+    background: transparent;
+  }
+
+  html .table {
+    font-size: 12px;
+    width: auto;
+    min-width: 100%;
+  }
+
+  html .table td {
+    padding: 10px 5px;
+  }
+
+  .rollers-table .table-responsive {
+    position: relative;
+  }
+
+  .rollers-table {
+    z-index: 1;
+  }
+
+  .rollers-table:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 50px;
+    background: var(--secondary);
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 15px;
+  }
+
+  .c-foot .field input {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .chat-toggle {
+    width: 40px;
+  }
+
+  .chat-wrap {
+    width: 100%;
+    border-left: 0;
+    padding: 56px 0 115px;
+  }
+
+  .auto-bet-wrap {
+    width: 100%;
+    border-left: 0;
+    padding: 30px 0 30px;
+    position: unset;
+  }
+
+  .autoSettings {
+    margin-top: 0px;
+  }
+  .c-head {
+    min-height: 0;
+  }
+
+  .c-foot {
+    padding: 15px 20px;
+  }
+
+  .chat-wrap h2 {
+    font-size: 20px;
+  }
+
+  .chat-close {
+    background: var(--primary);
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 28px;
+    margin-left: 14px;
+  }
+
+  .footer-top {
+    padding: 30px 0;
+  }
+
+  .footer-top .col-md-4 {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+
+  .footer-top .col-md-2 {
+    flex-basis: 50%;
+    max-width: 50%;
+    margin-top: 25px;
+  }
+
+  footer h3 {
+    margin: 0 0 20px;
+  }
+
+  .footer-price {
+    margin-top: 10px;
+  }
+
+  .main-range-wrap {
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 80px;
+  }
+
+  .main-range-wrap .irs--flat .irs-handle {
+    width: 55px;
+    height: 55px;
+    background-position: -7px -8px;
+    background-size: 70px auto;
+    top: -22px;
+    right: -28px;
+  }
+
+  .main-range-wrap .irs--flat .irs-single {
+    font-size: 12px;
+    width: 110px;
+    top: 40px;
+  }
+
+  .toast-wrap {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .big-number * {
+    width: 50px !important;
+  }
+
+  form .row {
+    margin-left: -6px;
+    margin-right: -6px;
+  }
+
+  form .row [class*="col-"] {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .mobile-field-btn {
+    position: relative;
+  }
+
+  .mobile-field-btn .submit-btn-wrap {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    margin: 0;
+  }
+
+  .mobile-field-btn .submit-btn-wrap .btn {
+    padding: 0 15px;
+  }
+
+  .form-group .form-control {
+    padding: 0 15px;
+    font-size: 14px;
+  }
+
+  .form-group .field-icon .form-control {
+    padding-right: 45px;
+  }
+}

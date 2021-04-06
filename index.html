@@ -1,0 +1,1867 @@
+<!doctype html>
+<html lang="en" class="chat-show">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7R7QQBN42B"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7R7QQBN42B');
+    </script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(69573721, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/69573721" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>Betdice - Bitcoin Dice Gambling, Crypto Casino</title>
+    <meta name="description" content="🎲 Bitcoin dice game with more ways to win 🎲. Provably fair. Lowest house edge. Instant withdrawals. Weekly Contest. Register instantly & win Bitcoin">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" content="Dice, Bitcoin, Casino, Gambling, Provably Fair, Promo, Promotion, Contest, Races, BTC, Satoshi, Crypto, Cryptocurrency">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png" sizes="32x32" />
+    <!-- Fonts CSS -->
+    <link rel="stylesheet" href="fonts/font.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Main Css -->
+    <link rel="stylesheet" href="css/ion.rangeSlider.min.css">
+    <!-- Main Css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive Css -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Modals -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <!-- Emoji Picker -->
+</head>
+
+<body>
+    <div class="toast-wrap">
+        <div id='errorToast' class="toast fade toast-hide">
+            <h4 class="text-red">Error!</h4>
+            <p id='errorToastText'>An error occurred</p>
+            <button type="button" class="close" aria-label="Close">
+                ×
+            </button>
+            <div class="toast-loading red">
+            </div>
+        </div>
+        <div id='successToast' class="toast fade toast-hide">
+            <h4 class="text-green">Success!</h4>
+            <p id='successToastText'>Success!</p>
+            <button type="button" class="close" aria-label="Close">
+                ×
+            </button>
+            <div class="toast-loading green">
+            </div>
+        </div>
+    </div>
+    <!-- Race Modal Start -->
+    <div id="raceModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <span class="text-icon">
+                        <i class="fas fa-flag-checkered"></i>
+                    </span>
+                    <p class="modal-title">Weekly Races</p>
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="modal-menu-body">
+                        <img src='./images/wager-contest.svg' class='race-header' />
+                        <div class='race-prizes'>
+                            <h4 class='modal-title'>
+                                Prize Pool
+                            </h4>
+                            <h4 class='modal-title emphasis'>
+                                BTC 0.01
+                            </h4>
+                        </div>
+                        <div class='race-countdown-container'>
+                            <h5 class='race-countdown-label'>Ends in</h5>
+                            <h5 id='raceCounter' class='race-countdown'>12:00:00:00</h5>
+                        </div>
+                        <div class='user-wager-container' id="user_wager">
+                            <h5 class='race-countdown-label'>Your wager</h5>
+                            <h5 class='race-countdown' id="user_wager_amount"></h5>
+                        </div>
+                        <p>Win amazing prizes with Betdice Weekly Wagering Race. Battle against each other to see who becomes the number one player.</p>
+                        <p>Play and wager as much as you can to rank up higher. All bets are automatically counted towards the race. There is no minimum bet amount. The top 10 wager players will be awarded prizes.</p>
+                        <p>Ranking for the current race is displayed below with the expected prizes to be won.</p>
+                        <div class="cust-table-body">
+                            <table class="table" id="races_table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Rank</th>
+                                        <th scope="col">Player</th>
+                                        <th scope="col">Wager</th>
+                                        <th scope="col">Prize</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Race Modal End -->
+    <!-- Wallet Modal Start -->
+    <div id='walletModal' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <span class="text-icon">
+                        <i class="fas fa-wallet"></i>
+                    </span>
+                    <p id='walletTitle' class="modal-title">Deposit</p>
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body pt-0">
+                    <div class="no-scrollbar" style="overflow-x: auto;">
+                        <div class="modal-header-menu">
+                            <div class="modal-header-menu-item active" data-menu="Deposit">
+                                Deposit
+                            </div>
+                            <div class="modal-header-menu-item" data-menu="Withdraw">
+                                Withdraw
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wallet-menu-body" id='depositBody'>
+                        <p class='accentP'>Your Bitcoin Deposit Address</p>
+                        <input id='depositInput1' type="text" class="modal-input" value="" readonly>
+                        <img src='' class='modal-qr' id='depositQRCode' />
+                        <p class='walletDisclaimer'>Only send BTC to this address, 1 confirmation(s) required.</p>
+                    </div>
+                    <div class="wallet-menu-body hide" id='withdrawBody'>
+                        <p class="accentP">BTC Address (Automatic Withdrawal to your Address)</p><input id="withdrawInput1" type="text" class="modal-input">
+                        <p class="accentP">Amount (MIN 0.0010000)</p><input id="withdrawInput2" type="text" class="modal-input" value="">
+                        <button id="withdrawButton" class="btn btn-primary col-6 m-auto mt-10px">Withdraw</button>
+                        <button class="btn btn-primary col-6 m-auto mt-10px hide" id="withdrawButton_loading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Wallet Modal End -->
+    <!-- My Stats Modal Start -->
+    <div id="statsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <!-- <span class="text-icon">
+						<i class="fas fa-flag-checkered"></i>
+					</span> -->
+                    <!-- <p class="modal-title">Weekly Races</p> -->
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body p-0" style="padding-bottom: 0 !important;">
+                    <div class="modal-menu-body" style="height: 100%;">
+                        <div class='stats-header'>
+                            <p>
+                                Username
+                            </p>
+                            <h3 class='modal-title' id='my_stats_username'>
+                            </h3>
+                        </div>
+                        <div class='stats-container'>
+                            <div class='stats-item'>
+                                <p>Total Bets</p>
+                                <h4 id='my_stats_bets'>0</h4>
+                            </div>
+                            <div class='stats-item'>
+                                <p>Total Wins</p>
+                                <h4 class='text-green' id='my_stats_wins'>0</h4>
+                            </div>
+                            <div class='stats-item'>
+                                <p>Total Losses</p>
+                                <h4 class='text-red' id='my_stats_losses'>0</h4>
+                            </div>
+                            <div class='stats-item-wide'>
+                                <p>Wagered</p>
+                                <h4 id='my_stats_wagered'>0</h4>
+                            </div>
+                            <div class='stats-item-wide'>
+                                <p>Profit</p>
+                                <h4 id='my_stats_profit'>0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- My Stats Modal End -->
+    <!-- Profile Modal Start -->
+    <div id='profileModal' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <span class="text-icon">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <p id='profileTitle' class="modal-title">My Profile</p>
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body pt-0">
+                    <div class="profile-menu-body">
+                        <p class='accentP'>Username</p>
+                        <input type="text" class="modal-input" id='profile_username' readonly>
+                        <p class='accentP'>Email</p>
+                        <input type="text" class="modal-input" id='profile_email'>
+                        <p class='accentP'>Change Password</p>
+                        <input type="password" class="modal-input" id='profile_password'>
+                        <button id='profile_submit' class="btn btn-primary col-6 m-auto mt-10px">Submit</button>
+                        <button class="btn btn-primary col-6 m-auto mt-10px hide" id="profile_submit_loading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Profile Modal End -->
+    <!-- History Modal Start -->
+    <div id="historyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <span class="text-icon">
+                        <i class="fas fa-book-open"></i>
+                    </span>
+                    <p class="modal-title">History</p>
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="modal-menu-body">
+                        <div>
+                            <div class="tab-header historyTabber">
+                                <div id="tab-head-1" class="tab-header-text left active">BETS</div>
+                                <div id="tab-head-2" class="tab-header-text">DEPOSITS</div>
+                                <div id="tab-head-3" class="tab-header-text right">WITHDRAWALS</div>
+                            </div>
+                            <div class="tab-body mb-4">
+                                <div id="tab-1" class="tab-body-text active">
+                                    <div class="tab-pane fade show active" id="beats_1">
+                                        <div class="rollers-table">
+                                            <div class="table-responsive">
+                                                <div class="cust-table-body">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Bet ID</th>
+                                                                <th scope="col">Date/Time</th>
+                                                                <th scope="col">Bet</th>
+                                                                <th scope="col">Payout</th>
+                                                                <th scope="col">Profit</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id='historyBets'>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-2" class="tab-body-text">
+                                    <div class="tab-pane fade show active" id="beats_2">
+                                        <div class="rollers-table">
+                                            <div class="table-responsive">
+                                                <div class="cust-table-body">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Date/Time</th>
+                                                                <th scope="col">Currency</th>
+                                                                <th scope="col">Amount</th>
+                                                                <th scope="col">Confirmation</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id='historyDeposits'>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-3" class="tab-body-text">
+                                    <div class="tab-pane fade show active" id="beats_3">
+                                        <div class="rollers-table">
+                                            <div class="table-responsive">
+                                                <div class="cust-table-body">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Date/Time</th>
+                                                                <th scope="col">Currency</th>
+                                                                <th scope="col">Amount</th>
+                                                                <th scope="col">Address</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id='historyWithdrawals'>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- History Modal End -->
+    <!-- Login Modal Start -->
+    <div id='loginModal' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <span class="text-icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                    <p class="modal-title">Login</p>
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body pt-0">
+                    <div class="auth-menu-body">
+                        <form class='auth-menu-body' id='loginForm'>
+                            <p class='accentP'>Username</p>
+                            <input type="text" class="modal-input" id='login_username'>
+                            <p class='accentP'>Password</p>
+                            <input type="password" class="modal-input" id='login_password'>
+                            <button type='submit' class="btn btn-primary col-6 m-auto mt-6" id="login_button">Login</button>
+                            <button class="btn btn-primary col-6 m-auto mt-6 hide" id="login_button_loading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login Modal End -->
+    <!-- Signup Modal Start -->
+    <div id='signupModal' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <span class="text-icon">
+                        <i class="fas fa-person"></i>
+                    </span>
+                    <p class="modal-title">Sign Up</p>
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body pt-0">
+                    <div class="auth-menu-body">
+                        <form class='auth-menu-body' id='signupForm'>
+                            <p class='accentP'>Username</p>
+                            <input type="text" class="modal-input" id='signup_username'>
+                            <p class='accentP'>Password</p>
+                            <input type="password" class="modal-input" id='signup_password'>
+                            <button class="btn btn-primary col-6 m-auto mt-6" id="signup_button">Sign Up</button>
+                            <button class="btn btn-primary col-6 m-auto mt-6 hide" id="signup_button_loading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Signup Modal End -->
+    <!-- Fair Modal Start -->
+    <div id="fairModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <span class="text-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </span>
+                    <p class="modal-title">Fairness</p>
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="modal-menu-body" style="padding: 0 5%; display: flex; flex-direction: column;">
+                        <h5>Current Pair</h5>
+                        <p class='accentP'>Server Seed (Hashed)</p>
+                        <input type="text" class="modal-input" id='fair_server' readonly>
+                        <p class='accentP'>Client Seed</p>
+                        <input type="text" class="modal-input" id='fair_client' readonly>
+                        <p class='accentP'>Nonce</p>
+                        <input type="text" class="modal-input" id='fair_nonce' readonly>
+                        <hr style="background-color: white;" />
+                        <h5>New Pair</h5>
+                        <p class='accentP'>Server Seed (Hashed)</p>
+                        <input type="text" class="modal-input" id='fair_new_server' readonly>
+                        <p class='accentP'>Client Seed</p>
+                        <input type="text" class="modal-input" id='fair_new_client'>
+                        <button class="btn btn-primary col-6 m-auto mt-10px" id='fair_submit'>Submit</button>
+                        <button class="btn btn-primary col-6 m-auto mt-10px hide" id="fair_submit_loading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fair Modal End -->
+    <!-- How it Works Modal Start -->
+    <div id="workingsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <span class="text-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </span>
+                    <p class="modal-title">Fairness</p>
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="modal-menu-body" style="padding: 0 5%;">
+                        <h4 style="padding: 0 2.5% 2%">How provably fair works?</h4>
+                        <p>Betdice uses a provably fair cryptographic system which means you don’t have to trust us blindly,
+                            each roll is cryptographically fair and can be verified to be manipulation free.
+                        </p>
+                        <p>In order to allow players to verify their bets, a pair of Server Seed and Client Seed is used to
+                            calculate a roll number. A process of creating a new pair of Server Seed and Client Seed is called
+                            randomization. It's possible to make randomization anytime. By knowing the Server Seed, Client Seed and
+                            Nonce, it's possible to calculate bet result.
+                        </p>
+                        <p>To prevent players from result prediction, the Server Seed is hidden, and a SHA-256 hash of the seed is
+                            shown instead. After next randomization, previous Server Seed is revealed and players is able to verify
+                            the bet. Also, players can make sure that Server Seed wasn't changed by comparing their hashes before and
+                            after randomization.
+                        </p>
+                        <p>To generate a roll number between 0 and 9,999 we combine your Server Seed, your Client Seed and your
+                            Nonce (bet number). Then, we calculate a SHA-512 hash of that combination. That gives us a 128 character
+                            hex string.
+                        </p>
+                        <p style="margin-bottom: 2.5%;">We then take the first 5 characters of that hash and convert them to a decimal number ranging from 0 to
+                            1,048,575 (16 ^ 5 - 1). If it is less than 1 million, we divide it by 10,000 and use it as your roll
+                            outcome. Otherwise, we repeat using the next five characters. We are able to repeat the process up to 25
+                            times. In the very rare case ((48,576 / 1,000,000) ^ 25) that none of the 25 trials are lower than 1
+                            million when converted to decimal, we use the remaining 3 characters and convert them to your roll number.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- How it Works Modal End -->
+    <!-- About Us Modal Start -->
+    <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <span class="text-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <p class="modal-title">About Us</p>
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="modal-menu-body" style="padding: 0 5%;">
+                        <h4 style="padding: 0 2.5% 2%">Why Betdice?</h4>
+                        <p>Betdice is a unique cryptocurrency dice game providing pleasant pastime. We offer our members to play Provably Fair dice and some bonus games, join contests, achieve various awards and take part in community life via chat and private messages. We are proud of being honest, friendly, and beautiful gambling service!</p>
+                        <p>Our service is strongly user-oriented which is manifested in carefully designed UI, proactive support, low House Edge, and transparent withdrawal principles.</p>
+                        <p>We have also implemented various side features such as awards and a wide amount of bonuses. We also let our members share their bets and awards processing shares to Social Networks as referral links and create custom affiliate campaigns to earn bonus coins.</p>
+                        <p>Our Tech Team consists of top-tier programmers, designers, and quality assurance specialists who day-to-day work on stability and development of Betdice. They constantly upgrade Betdice to let our players feel themselves better than on any other dice game. To provide an excellent experience the Tech Team works on providing smooth performance both on desktop and mobile.</p>
+                        <p>Betdice pays much attention to the security. We implemented multi-tier protection to guarantee the safety of members money and data. We also let our users play with firewall and VPN to make connection safer.</p>
+                        <p style="margin-bottom: 2.5%;">We also pay much attention to our community, so there are Moderation and Support Teams which helps our players, to solve disputes and keep a friendly atmosphere. Our Support always respond as fast as possible to provide top-notch service and make gambling comfortable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Us Modal Start -->
+    <div id="privacyPolicyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <span class="text-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <p class="modal-title">Privacy Policy</p>
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="modal-menu-body" style="padding: 0 5%;">
+                        <p>At Betdice, accessible from betdice.io, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Betdice and how we use it.</p>
+
+                        <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
+
+                        <p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in Betdice. This policy is not applicable to any information collected offline or via channels other than this website.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">1. Consent</h4>
+                        <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">2. Information we collect</h4>
+                        <p>The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.</p>
+
+                        <p>If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.</p>
+
+                        <p>When you register for an Account, we may ask for your contact information, including items such as name and email address.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">3. How we use your information</h4>
+                        <p>We use the information we collect in various ways, including to:</p>
+
+                        <p>- Provide, operate, and maintain our website</p>
+                        <p>- Improve, personalize, and expand our website</p>
+                        <p>- Understand and analyze how you use our website</p>
+                        <p>- Develop new products, services, features, and functionality</p>
+                        <p>- Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the webste, and for marketing and promotional purposes</p>
+                        <p>- Send you emails</p>
+                        <p>- Find and prevent fraud</p>
+
+                        <h4 style="padding: 0 2.5% 2%">4. Log Files</h4>
+                        <p>Betdice follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">5. Client Side Storage</h4>
+                        <p>Like any other website, Betdice uses 'local storage'. This storage is used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">6. Advertising Partners Privacy Policies</h4>
+                        <p>You may consult this list to find the Privacy Policy for each of the advertising partners of Betdice.</p>
+
+                        <p>Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Betdice, which are sent directly to users' browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.</p>
+
+                        <p>Note that Betdice has no access to or control over these cookies that are used by third-party advertisers.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">7. Third Party Privacy Policies</h4>
+                        <p>Betdice's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.</p>
+
+                        <p>You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers' respective websites.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="termsOfServiceModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <span class="text-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <p class="modal-title">Terms of Service</p>
+                    <a href='#' rel='modal:close' aria-label="Close" class='close'>
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="modal-menu-body" style="padding: 0 5%;">
+                        <p>This Services Agreement ("Agreement") is a legal agreement between Betdice. ("Betdice", "we", or "us") and the person ("you", "your", or "user") who registered a Betdice Account to use the Betdice services that may be offered by Betdice (each, a "Service"). This agreement describes the terms and conditions that apply to your use of the Services.</p>
+
+                        <p>If you do not understand any of the terms of this agreement, please contact us before using the service.</p>
+
+                        <p>You may not use our service unless you agree to abide by all of the terms and conditions of this Agreement.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">1. Eligibility</h4>
+                        <p>By accessing or using the Betdice services, you represent and warrant that you will not use any services if the laws applicable to you owing to your country of residency and/or citizenship prohibit you from doing so in accordance with this agreement and you acknowledge that Betdice is not liable for your compliance and failure to comply with such laws. You represent and warrant that you will not be using any services offered by Betdice for any illegal activity, including without limitation money laundering, fraud, blackmail, extortion, ransoming data, financing of terrorism or any other violent activities or prohibited market practices.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">2. Account Registration</h4>
+                        <p>By using a Betdice Account, you agree and represent that you will use the Betdice Services only for yourself, and not on behalf of any third party. You are fully responsible for all activity that occurs under your Betdice Account. We may, in our sole discretion, refuse to open a Betdice Account for you, or limit the number of Betdice Accounts that you may hold or suspend or terminate any Betdice Account.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">3. Account Termination</h4>
+                        <p>We reserves the right to immediately suspend, freeze or terminate your account if you:</p>
+
+                        <p>- Impersonate Betdice staff or other users;</p>
+                        <p>- In the event of suspected exploit abuse;</p>
+                        <p>- Manipulate the outcome of bets;</p>
+                        <p>- Illegal activity;</p>
+                        <p>- Abuse bug(s);</p>
+                        <p>- Sell account(s);</p>
+                        <p>- Do not advertise or attract players to other sites;</p>
+                        <p>- Multiple accounts solely intented for rain/faucet farming;</p>
+                        <p>- Exploiting any vulnerabilities of digital currencies;</p>
+                        <p>- Spreading false information about Betdice.</p>
+
+                        <p>See "funds recovery" for information about recovering your funds after account termination.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">4. Risk Disclosure</h4>
+                        <p>You agree and understand that there are risks associated with utilizing services involving digital currencies including, but not limited to, the risk of failure of hardware, software and internet connections and the risk of malicious software introduction. You acknowledge that Betdice shall not be responsible for any communication failures, disruptions, errors, distortions or delays you may experience when using the services, howsoever caused.
+
+                        The risk of loss in using services involving digital currencies may be substantial and losses may occur over a short period of time. In addition, price and liquidity are subject to significant fluctuations that may be unpredictable.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">5. Data retention</h4>
+                        <p>To keep the Betdice website and other services running smoothly, we can delete all game history and other transactional data older than 3 months.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">6. Processing Deposits and Withdrawals</h4>
+                        <p>Our wallet allows you to send, receive and store digital currencies. You must deposit and withdraw digital currencies from an address that is registered to/ and used by you. We will process the digital currency transactions in accordance with the instructions we receive from you.</p>
+                        <p>1. Data Submission: It is your responsibility to ensure that you have entered the correct data (eg. digital currency address). Betdice is not liable and will deny responsibility for any damages or losses you may incur as a result of providing incorrect payment information. For example, if you send your Bitcoin's to an incorrect digital currency address, your money may be lost.</p>
+                        <p>2. Withdraw Delay: For safety, we store a limited amount of digital currencies in our hot wallet. In some cases it can occur that a withdrawal may take up to 72 hours, but that's only because Betdice may need to shift digital currencies from our cold storage to our hot wallet. If there are any questions regarding to this agreement, feel free to contact us.</p>
+                        <p>3. Digital Currency Network: Betdice has no control over any digital currency network and therefore cannot and does not ensure that any transaction details you submit via our services will be confirmed on the relevant digital currency network. You agree and understand that the transaction details you submit via our services may not be completed, or may be substantially delayed, by the digital currency network used to process the transaction.</p>
+                        <p>4. Refunds: Digital currency transactions cannot be reversed once they have been broadcast to the relevant digital currency network.Betdice may refuse to process or cancel any pending digital currency transaction as required by law or any court or other authority to which Betdice is subject in any jurisdiction.</p>
+                        <p>5. Processing Errors: We reserve the right to cancel/suspend your transaction in the event that a technical failure caused by third parties or other unforeseeable circumstances results in Betdice not being able to complete your transaction in a timely manner.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">7. Fees and Costs</h4>
+                        <p>Betdice does not charge a fee for storing, sending and receiving digital currencies in your wallet. However, we reserve the right to do so in the future, and in such case any applicable fees will be displayed prior to you incurring the fee.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">8. Service Availability</h4>
+                        <p>No guarantee regarding the availability of our Services is provided. The Services may be switched off in the event of DDOS attacks, technical malfunctions, maintenance, or a shortage of liquidity for example.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">9. Use of Services by Minors</h4>
+                        <p>The Betdice services are intended solely for users who are at least 18 years of age or older, have the capacity to enter into this user agreement and agree to be legally bound by the terms and conditions of this user agreement.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">10. Contests</h4>
+                        <p>Betdice offers weekly contests. The following terms apply:</p>
+                        <p>1. In Case of a Tie: If two or multiple users finish with the same score the prizes will be equally distrubited amongs them.</p>
+                        <p>2. Bet Eligibility: Only one entry per household per contest is permitted. Bets made with faucet funds (JCC) are not eligible.</p>
+                        <p>3. Payout: Betdice will automaticly process payouts within 10 minutes after the contest has finished. The prizes are paid out in BTC or any other crypto currency.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">11. Inactive accounts</h4>
+                        <p>Betdice reserve the right to shut down accounts that have been inactive for more than 12 months and reclaim their funds. We discourage our users to use Betdice as a digital currency storage. If you want to store your digital currencies for the long term, we advise the usage of a hosted online wallet service like Blockchain or your own hardware wallet.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">12. Close account</h4>
+                        <p>You may close your Betdice account at any time, at your sole discretion. Closing your Betdice account may not result in the deletion of information we hold about you.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">13. Funds Recovery</h4>
+                        <p>You are able to recover your remaining funds after account has been terminated. However Betdice reserve the right to deny your claim if the following conditions are not met:</p>
+                        <p>1. Valid Email: You have access and start the recovery process by contacting us with the email associated with your Betdice account;</p>
+                        <p>2. Valid Funds: Your funds are not acquired by use of exploits, bugs or any other means of abuse;</p>
+                        <p>3. Identity Check: To ensure the rightfull ownership of the funds, we can ask specific questions only you will know. Such as validation of 2FA code, account statistics or other account specific details.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">14. Links</h4>
+                        <p>Betdice has not reviewed all of the sites linked to its Website and is not responsible for the contents of any such linked site. The presence of any link does not imply endorsement by Betdice of the site. The use of any linked website is at the user's own risk.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">15. Indemnity</h4>
+                        <p>You agree to indemnify, defend, and hold harmless: Betdice, its affiliates, subsidiaries, directors, managers, members, officers, and employees from any and all claims, losses, damages, liabilities, deficiencies, claims, actions, judgments, settlements, interest, awards, penalties, fines, costs, or expenses of whatever kind, including attorneys' fees, arising from or relating to your use or misuse of the services or your breach of these terms.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">16. Disclosures and Notices; Electronic Signature Consent</h4>
+                        <p>1. Consent to Electronic Disclosures and Notices: By agreeing with the terms of service, you agree that such action constitutes your electronic signature, and you consent to the electronic provision of all disclosures and notices from Betdice ("Notices"), including those required by Law. You also agree that your electronic consent will have the same legal effect as a physical signature.</p>
+                        <p>2. Methods of Delivery: You agree that Betdice can provide Notices regarding the Services to you through our website, or by mailing Notices to your email. Notices may include notifications about your account, changes to the Services, or other information we are required to provide to you. You also agree that electronic delivery of a Notice has the same legal effect as if we provided you with a physical copy. We will consider a Notice to have been received by you within 24 hours of the time a Notice is either posted to our website or emailed to you.</p>
+                        <p>3. Requirements for Delivery: It should come as no surprise to you that you will need a computer or mobile device, Internet connectivity, and an updated browser to review the Notices provided to you. If you are having problems viewing or accessing any Notices, please contact us and we can find another means of delivery.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">17. Limitation of Liability</h4>
+                        <p>Under no circumstances will any Betdice entity be responsible or liable to you for any indirect, punitive, incidental, special, consequential, or exemplary damages resulting from your use or inability to use the services or for the unavailability of the services, for lost profits, personal injury, or property damage, or for any other damages arising out of, in connection with, or relating to this agreement or your use of the services, even if such damages are foreseeable, and whether or not you or the Betdice entities have been advised of the possibility of such damages. The Betdice entities are not liable, and deny responsibility for any damages, harm, or losses to you arising from or relating to hacking, tampering, or other unauthorized access or use of the services, your Betdice affiliate account, or data, or any other data security measure. The Betdice entities further deny responsibility for all liability and damages to you or others caused by (a) any unauthorised access of servers, infrastructure, or data used in connection with the services; (b) interruptions or cessation of the services; (c) any bugs, viruses, or other harmful code that may be transmitted to or through the services; (d) any errors, inaccuracies, omissions, or losses in or to any data provided to us; (e) third-party content provided by you; or (f) the defamatory, offensive, or illegal conduct of others.</p>
+                        <p>You agree to limit any additional liability not disclaimed or denied by the Betdice entities under this agreement to your direct and documented damages.</p>
+                        <p>These limitations on our liability to you will apply regardless of the legal theory on which your claim is based, including contract, tort (including negligence), strict liability, or any other theory or basis.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">18. Copyright</h4>
+                        <p>Content published on this and other betdice.io related websites (digital downloads, images, texts, graphics, logos) is the property of Betdice and/or its content creators and protected by international copyright laws. The entire compilation of the content found on this website is the exclusive property of Betdice.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">19. Revisions and Errata</h4>
+                        <p>The materials appearing on Betdice's Website may include technical, typographical, or photographic errors. Betdice will not promise that any of the materials in this Website are accurate, complete, or current. Betdice may change the materials contained on its Website at any time without notice. Betdice does not make any commitment to update the materials.</p>
+
+                        <h4 style="padding: 0 2.5% 2%">20. Updates to this Agreement</h4>
+                        <p>We may change this Agreement. Any changes are effective when we post the revised Agreement on our website.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Us Modal End -->
+    <!-- Wrapper Start -->
+    <div id="wrapper">
+        <!-- Page Loader Start -->
+        <div id="loader-wrapper">
+            <div id="loader"><img src="images/dice-animation.gif" alt="" width="" height=""></div>
+            <div class="loader-section-wrap">
+                <div class="loader-section"></div>
+                <div class="loader-section"></div>
+                <div class="loader-section"></div>
+                <div class="loader-section"></div>
+            </div>
+        </div>
+        <!-- Page Loader End -->
+        <header class="">
+            <div class="container">
+                <div class="row align-items-center justify-content-center justify-content-lg-between justify-content-xl-between">
+                    <div class="col-auto header-col-logo mb-2 mb-lg-0 mb-xl-0">
+                        <div class="d-flex align-items-center">
+                            <div class="logo">
+                                <a href="#"><img src="images/logo-new.svg" alt="" /></a>
+                            </div>
+                            <a id="racesButton" href='#' class="race-btn ml-3 ml-lg-4">
+                                <img src="images/race-flag.svg" alt="" />Races
+                            </a>
+                            <!-- <div class="status-label ml-3 ml-lg-4">
+								<span style="background-color:#32FAB8;"></span> Online
+							</div> -->
+                        </div>
+                    </div>
+                    <div class="col-auto mb-2 mb-lg-0 mb-xl-0">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="header-price-item active hide" id="button_bitcoin_balance">
+                                <h6>Your Balance :</h6>
+                                <h4 id='balance'>BTC 0.00000000</h4>
+                            </div>
+                            <div class="profile-drop ml-3 ml-lg-5" id='navbar_user_dropdown'>
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="images/user-icon.svg" alt="" class="mr-2" />Profile
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href='#' id='walletButton'>Wallet</a>
+                                        <a class="dropdown-item" href="#" id='profileButton'>My Profile</a>
+                                        <a class="dropdown-item" href="#" id='statsButton'>My Stats</a>
+                                        <a class="dropdown-item" href="#" id='historyButton'>History</a>
+                                        <a class="dropdown-item" href="#" id='fairButton'>Fairness</a>
+                                        <a class="dropdown-item" href="#" id='logoutButton'>Log Out</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='auth-buttons' id='navbar_auth_buttons'>
+                                <button class='login-btn'>Login</button>
+                                <button class='signup-btn'>Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section style="z-index: 9;">
+            <div class="r-number-label">
+                <span>Roll Number</span>
+            </div>
+            <div class="container">
+                <!-- <div class="how-play-btn">
+						<a href="#"><img src="images/trophy.svg" alt="" class="mr-2"/>How to win Jackpot?</a>
+					</div> -->
+                <div class="container-sub">
+                    <div class="big-number" data-number="5865">0000</div>
+                    <div class="tab_nav">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item auto-bet-close" role="presentation">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" aria-selected="true">Manual</a>
+                            </li>
+                            <li class="nav-item auto-bet-open" role="presentation">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" aria-selected="false">Auto</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="auto-bet-wrap fade hide" id='auto-left-panel'>
+                        <div class='autoSettings'>
+                            <div class='autoSubSettings form-group'>
+                                <h5 class="text-center">Autobet</h5>
+                                <h5>Limits</h5>
+                                <label for="max_bet_amount">Max Bet Amount</label>
+                                <div class='field-icon'>
+                                    <input id="max_bet_amount" type="text" class="form-control modal-input" value="∞">
+                                    <div class="icon icon-border"><img src="images/bitcoin.svg" alt="" /></div>
+                                </div>
+                                <label for="number_of_bets">Number of Bets</label>
+                                <input id="number_of_bets" type="text" class="form-control modal-input" value="∞">
+
+                            </div>
+                            <hr class="my-3 mx-3" style="
+                                border-color: var(--primary);
+                            ">
+                            <div class='autoSubSettings form-group'>
+                                <h5>On Loss</h5>
+
+
+                                <ul class="list-group">
+                                    <li class="list-group-item"><div class="form-row align-items-center">
+                                        <div class="col">
+                                            <div class="custom-control custom-radio">
+                                                <input class="custom-control-input" type="radio" name="actionOnLose" id="on_lose_change_bet" value="changebetby">
+                                                <label class="custom-control-label" for="on_lose_change_bet">
+                                                    Change Bet By
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col field-icon">
+                                            <input type="number" id="on_lose_change_bet_value" value="0.00" class="form-control modal-input"/>
+                                            <div class="icon"><img src="images/percent.svg" alt=""></div>
+                                        </div>
+                                    </div></li>
+                                    <li class="list-group-item"><div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" name="actionOnLose" id="reset_to_base" value="resettobase" checked="checked">
+                                        <label class="custom-control-label" for="reset_to_base">
+                                            Reset to Base Bet
+                                        </label>
+                                    </div></li>
+                                    <li class="list-group-item"><div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" name="actionOnLose" id="stop_auto_bet" value="stopautobet">
+                                        <label class="custom-control-label" for="stop_auto_bet">
+                                            Stop Auto Bet
+                                        </label>
+                                    </div></li>
+                                </ul>
+
+
+                            </div>
+                            <hr class="my-3 mx-3" style="
+                                border-color: var(--primary);
+                            ">
+                            <div class='autoSubSettings form-group'>
+                                <h5>On Win</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <div class="form-row align-items-center">
+                                            <div class="col">
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio" name="actionOnWin" id="change_bet_by" value="changebetby">
+                                                    <label class="custom-control-label" for="change_bet_by">
+                                                        Change Bet By
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col field-icon">
+                                                <input type="number" class="form-control modal-input" id="on_win_change_bet_value" value="0.00">
+                                                <div class="icon"><img src="images/percent.svg" alt=""></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="custom-control custom-radio">
+                                            <input class="custom-control-input" type="radio" name="actionOnWin" id="on_win_reset_to_base" value="resettobase" checked="checked">
+                                            <label class="custom-control-label" for="on_win_reset_to_base">
+                                                Reset to Base Bet
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="custom-control custom-radio">
+                                            <input class="custom-control-input" type="radio" name="actionOnWin" id="on_win_stop_auto_bet" value="stopautobet">
+                                            <label class="custom-control-label" for="on_win_stop_auto_bet">
+                                                Stop Auto Bet
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <hr class="my-3 mx-3" style="
+                                border-color: var(--primary);
+                            ">
+                            <div class='autoSubSettings form-group'>
+                                <h5>Stop If</h5>
+
+                                <label for="autobet_profit_above">Profit Above</label>
+                                <div class="field-icon">
+                                    <input type="number" id="autobet_profit_above" class="form-control modal-input" value="0.00000000">
+                                    <div class="icon icon-border"><img src="images/bitcoin.svg" alt="" /></div>
+                                </div>
+
+                                <label for="autobet_lose_exceed">Loss Exceeds</label>
+                                <div class="field-icon">
+                                    <input type="number" id="autobet_lose_exceed" class="form-control modal-input" value="0.00000000">
+                                    <div class="icon icon-border"><img src="images/bitcoin.svg" alt="" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        <div class="w-100 order-2 order-md-1 ">
+                            <div class="row justify-content-center">
+                                <div class="col-md-auto order-2 flex-fill order-md-1 mb-4">
+                                    <div class="box" style="min-width: 350px;">
+                                        <div class="d-flex align-items-center justify-content-between mb-3 mb-md-5">
+                                            <div class="status-label">
+                                                Live Stats
+                                            </div>
+                                            <div class="reload_link">
+                                                <a href="#" class='refreshLive'>Refresh <img src="images/reset-icon.svg"
+                                                        alt="" /></a>
+                                            </div>
+                                        </div>
+                                        <div class="bet-list">
+                                            <div class="item">
+                                                <div class="icon"><img src="images/game-icon.svg" alt="" /></div>
+                                                <h4 id='live_bet'>0.00000000<span>BTC</span></h4>
+                                                <p>Total Bet</p>
+                                            </div>
+                                            <div class="item">
+                                                <div class="icon"><img src="images/game-icon-2.svg" alt="" /></div>
+                                                <h4 id='live_profit'>0.00000000 <span>BTC</span></h4>
+                                                <p>Total Wins</p>
+                                            </div>
+                                        </div>
+                                        <div class="row wins-list">
+                                            <div class="col-6">
+                                                <div class="item">
+                                                    <h4 id='live_wins'>0</h4>
+                                                    <p>Total Wins</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="item bg-red">
+                                                    <h4 id='live_losses'>0</h4>
+                                                    <p>Total Losses</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-auto flex-fill order-1 order-md-2 mb-4 mb-md-0">
+                                    <div class="box bet-amount-cls" style="min-width: 350px;">
+                                        <form>
+                                            <div class="mobile-field-btn">
+                                                <div class="form-group">
+                                                    <label>Bet Amount<a href="#"
+                                                            onclick="return changeBetAmount($('#bet_amount').val()*0.5)">1/2</a>
+                                                        <a href="#"
+                                                            onclick="return changeBetAmount($('#bet_amount').val()*2)">X2</a></label>
+                                                    <div class="field-icon">
+                                                        <input id='bet_amount' type="number"
+                                                            class="form-control bet_amount" value="0.00000010" />
+                                                        <div class="icon icon-border"><img src="images/bitcoin.svg"
+                                                                alt="" /></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <label><span class='roll_direction' id='roll_direction'>Roll under</span> <a href="" class='roll_swap'><img
+                                                                    src="images/label_tra.svg" alt="" /></a></label>
+                                                        <input id='roll_number' type="text"
+                                                            class="form-control roll_number" value="5000" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Payout</label>
+                                                        <div class="field-icon">
+                                                            <input id='bet_payout' type="text"
+                                                                class="form-control bet_payout" value="3.3000" />
+                                                            <!-- <div class="icon"><img src="images/multiply-mathematical-sign.svg" alt="" /> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Win Chance</label>
+                                                        <div class="field-icon">
+                                                            <input id='win_chance' type="text"
+                                                                class="form-control win_chance" value="30.00" />
+                                                            <div class="icon"><img src="images/percent.svg" alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Profit</label>
+                                                        <div class="field-icon">
+                                                            <input id='bet_profit' type="text"
+                                                                class="form-control bet_profit" value="3.3000"
+                                                                readonly />
+                                                            <div class="icon icon-border"><img src="images/bitcoin.svg"
+                                                                    alt="" /></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="submit-btn-wrap" id='submit-manual'>
+                                        <a class="btn btn-primary roll_now" href="javaScript:void(0);"
+                                            id='button_bet'>Roll Now</a>
+                                    </div>
+                                    <div class="submit-btn-wrap hide" id='submit-auto'>
+                                        <a class="btn btn-primary roll_now" href="javaScript:void(0);" id='button_autobet_start'>Start Autobet</a>
+                                        <a class="btn btn-danger roll_now hide" href="javaScript:void(0);" id='button_autobet_stop'>Stop Autobet</a>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-100 order-1 order-md-2">
+                        <div class="main-range-wrap">
+                            <input type="range" id="range">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+    </section>
+    <section class="pt-0 pt-md-5">
+        <div class="container-sub">
+            <div class="table_tab_nav">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="allbets-tab" data-toggle="tab" href="#allbets" aria-selected="true">All
+                            Bets</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="rollers-tab" data-toggle="tab" href="#rollers" aria-selected="false">High
+                            Rollers</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="my-tab" data-toggle="tab" href="#my" aria-selected="false">My
+                            Bets</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="allbets">
+                    <div class="rollers-table">
+                        <div class="table-responsive">
+                            <div class="cust-table-head">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Bet ID</th>
+                                            <th scope="col">User</th>
+                                            <th scope="col">Time</th>
+                                            <th scope="col">Bet</th>
+                                            <th scope="col">Payout</th>
+                                            <th scope="col">Profit</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="cust-table-body">
+                                <table class="table">
+                                    <tbody id='allBetsTable'>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="rollers">
+                    <div class="rollers-table">
+                        <div class="table-responsive">
+                            <div class="cust-table-head">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Bet ID</th>
+                                            <th scope="col">User</th>
+                                            <th scope="col">Time</th>
+                                            <th scope="col">Bet</th>
+                                            <th scope="col">Payout</th>
+                                            <th scope="col">Profit</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="cust-table-body">
+                                <table class="table">
+                                    <tbody id='highRollersTable'>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="my">
+                    <div class="rollers-table">
+                        <div class="table-responsive">
+                            <div class="cust-table-head">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Bet ID</th>
+                                            <th scope="col">User</th>
+                                            <th scope="col">Time</th>
+                                            <th scope="col">Bet</th>
+                                            <th scope="col">Payout</th>
+                                            <th scope="col">Profit</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="cust-table-body">
+                                <table class="table">
+                                    <tbody id='myBetsTable'>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="logo">
+                            <a href="#"><img src="images/logo-new.svg" alt="" /></a>
+                        </div>
+                        <div class="footer-price">
+                            <img src="images/footer-coin.svg" alt="" />
+                            <h6>1 BTC =</h6>
+                            <h4 id='footerBTC'></h4>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <h3>Betdice</h3>
+                        <ul class="foot-list">
+                            <li><a href="#" id='aboutFooter'>About Us</a></li>
+                            <li><a href="#" id='fairFooter'>Fairness</a></li>
+                            <li><a href="https://about.gambleaware.org/" target="_blank" rel="noopener noreferrer">Gamble Aware</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <h3>Legal</h3>
+                        <ul class="foot-list">
+                            <li><a href="#" id="privacyFooter">Privacy Policy</a></li>
+                            <li><a href="#" id="termsFooter">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <h3>Community</h3>
+                        <ul class="foot-list">
+                            <li><a href="https://t.me/betdice_official" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+                            <li><a href="mailto:support@betdice.io">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                2020 Betdice All Rights Reserved ©
+            </div>
+        </div>
+    </footer>
+    </div>
+    <div class="chat-wrap">
+        <div class="chat-toggle"><img src="images/chat-icon.svg" alt="" /></div>
+        <div class="c-head">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <h2>Chat</h2>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="chat-close d-block d-md-none">×</div>
+                </div>
+            </div>
+        </div>
+        <div class="c-body">
+            <div class="chat-items">
+            </div>
+        </div>
+        <div class="c-foot">
+            <form id='chatForm'>
+                <div class="field">
+                    <input id='chatInput' type="text" placeholder="Type your message..." data-emojiable="true" data-emoji-input="unicode" />
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="status-label">
+                            <span style="background-color:#32FAB8;"></span> <span id='onlineUsers'>Online - 0</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <a href="javaScript:void(0);" class="btn btn-white btn-icon btn-emoji" id="emoji-button">
+						    <img src="images/smile.svg" alt="" class='emojione'/>
+					    </a>
+                        <button href="#" id='chatSend' class="btn btn-primary btn-sm" type='submit'>Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- javascript -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ion.rangeSlider.min.js"></script>
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LefFskUAAAAAI5aGraPKMmfsw0TuVctmqf2jRne"></script>
+    <script>
+        var recaptchaToken;
+        function recaptcha() {
+            grecaptcha.execute('6LefFskUAAAAAI5aGraPKMmfsw0TuVctmqf2jRne', {action: 'homepage'}).then(function(token) {
+                recaptchaToken = token;
+            });
+        }
+        grecaptcha.ready(function() {
+            recaptcha();
+            setInterval(function() { recaptcha() }, 90000);
+        });
+    </script>
+    <!-- Socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket;
+
+        function socketFunction() {
+            function check_cookie_name(name)
+            {
+              var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+              if (match) {
+                return match[2];
+              }
+            }
+
+            let token = check_cookie_name('token');
+
+            if (token) {
+              socket = io({query: `auth_token=${token}`});
+            } else {
+              socket = io();
+            }
+
+              socket.on("all chats", function (chats) {
+                chats.reverse();
+                chats.forEach(function (chat) {
+                  if (chat.username && chat.message) {
+                    $(".chat-items").append(`
+                        <div class="item">
+                            <div class="item-head">
+                                <p>${chat.username}</p>
+                            </div>
+                            <div class="dtc">
+                                <p>${chat.message}</p>
+                            </div>
+                        </div>
+                    `);
+                  }
+                });
+                $(".c-body").scrollTop($(".c-body")[0].scrollHeight);
+              });
+
+              socket.on("site info", function (info) {
+                $("#onlineUsers").text(`Online: ${info.onlineUsers}`);
+              });
+
+              socket.on("chats", function (chat) {
+                if (chat.username && chat.message) {
+                  $(".chat-items").append(`
+                                <div class="item">
+                                    <div class="item-head">
+                                        <p>${chat.username}</p>
+                                    </div>
+                                    <div class="dtc">
+                                        <p>${chat.message}</p>
+                                    </div>
+                                </div>
+                            `);
+                  $(".c-body").scrollTop($(".c-body")[0].scrollHeight);
+                }
+              });
+
+              socket.on("all bets", function (bet) {
+                $("#allBetsTable").prepend(`
+                    <tr>
+                        <td>${bet.id.split("-")[0]}...</td>
+                        <td>${bet.username}</ td>
+                        <td>${new Date()
+                            .getHours()
+                            .toString()
+                            .padStart(
+                            2,
+                            "0"
+                            )}:${new Date().getMinutes().toString().padStart(2, "0")}:${new Date().getSeconds().toString().padStart(2, "0")}</td>
+                        <td>${bet.amount}</td>
+                        <td>${bet.payout} <sup>X</sup></td>
+                        <td><span class="text-${
+                            bet.profit > 0 ? "green" : "red"
+                        }">${bet.profit}<img src="images/bitcoin-icon.svg" alt="" /></td>
+                    </tr>
+                `);
+                var rowCountAllBets = $('#allBetsTable > tr').length;
+                if (rowCountAllBets > 10) {
+                    var removeNumberNeg = 10 - rowCountAllBets;
+                    $("#allBetsTable tr").slice(removeNumberNeg).remove();
+                }
+              });
+
+              socket.on("bet", function (response) {
+                if (response === "unauthenticated") {
+                  if (switchTab === "manual") {
+                    $("#button_bet").removeClass("hide");
+                    $("#button_bet_loading").addClass("hide");
+                    $("#button_bet").prop("disabled", false);
+                  } else {
+                    autoBetStopStatus = true;
+                    autoBetStatus = false;
+                    $("#button_autobet_start").removeClass("hide");
+                    $("#button_autobet_stop").addClass("hide");
+                  }
+                  $(".big-number").rollNumber({
+                      number: 0000,
+                      speed: 500,
+                      interval: 200,
+                      rooms: 4,
+                      space: 80,
+                      fontStyle: {
+                        "font-family": "inherit",
+                      },
+                  });
+                  toastError("Please sign up first");
+                  return openSignUpModal();
+                }
+                if (diceGameMode === "manual") {
+                  if (response.valid === false) {
+                    $(".big-number").rollNumber({
+                      number: 0000,
+                      speed: 500,
+                      interval: 200,
+                      rooms: 4,
+                      space: 80,
+                      fontStyle: {
+                        "font-family": "inherit",
+                      },
+                    });
+                    toastError(response.message);
+                  } else {
+                    $(".big-number").rollNumber({
+                      number: response.message.rollResult,
+                      speed: 500,
+                      interval: 200,
+                      rooms: 4,
+                      space: 80,
+                      fontStyle: {
+                        "font-family": "inherit",
+                      },
+                    });
+                    $("#balance").html(`BTC ${response.message.balance}`);
+                  }
+                  if (switchTab === "manual") {
+                    $("#button_bet").removeClass("hide");
+                  }
+                  $("#button_bet_loading").addClass("hide");
+                  $("#button_bet").prop("disabled", false);
+                  manualBetStatus = false;
+                } else {
+                  if (response.valid === false) {
+                    $(".big-number").rollNumber({
+                      number: 0000,
+                      speed: 500,
+                      interval: 200,
+                      rooms: 4,
+                      space: 80,
+                      fontStyle: {
+                        "font-family": "inherit",
+                      },
+                    });
+                    toastError(response.message);
+                    autoBetStopStatus = true;
+                    autoBetStatus = false;
+                    $("#button_autobet_start").removeClass("hide");
+                    $("#button_autobet_stop").addClass("hide");
+                  } else {
+                    $(".big-number").rollNumber({
+                      number: response.message.rollResult,
+                      speed: 500,
+                      interval: 200,
+                      rooms: 4,
+                      space: 80,
+                      fontStyle: {
+                        "font-family": "inherit",
+                      },
+                    });
+                    if (response.message.betStatus === "win") {
+                        let onWinRadioSelection = $(
+                            'input[name="actionOnWin"]:checked'
+                        ).val();
+                        currentProfit += Number($("#bet_profit").val());
+                        previousBetStatus = "win";
+                        if (onWinRadioSelection === "changebetby") {
+                            let newAmount =
+                                $("#bet_amount").val() *
+                                ($("#on_win_change_bet_value").val() / 100 + 1);
+                            newAmount = Number(newAmount).toFixed(8);
+                            if (newAmount < 0.0000001) newAmount = "0.00000010";
+                            $("#bet_amount").val(newAmount);
+                            calculateBetProfit();
+                        } else if (onWinRadioSelection === "resettobase") {
+                            $("#bet_amount").val(baseBet);
+                            calculateBetProfit();
+                        } else {
+                            autoBetStopStatus = true;
+                            autoBetStatus = false;
+                            $("#button_autobet_start").removeClass("hide");
+                            $("#button_autobet_stop").addClass("hide");
+                            toastSuccess(
+                                "Autobet finished. Stop on win triggered."
+                            );
+                            return;
+                        }
+                    }
+
+                    if (response.message.betStatus === "lose") {
+                        currentProfit -= Number($("#bet_amount").val());
+                        previousBetStatus = "lose";
+                        let onWinRadioSelection = $(
+                            'input[name="actionOnLose"]:checked'
+                        ).val();
+                        if (onWinRadioSelection === "changebetby") {
+                            let newAmount =
+                                $("#bet_amount").val() *
+                                ($("#on_lose_change_bet_value").val() / 100 +
+                                    1);
+                            newAmount = Number(newAmount).toFixed(8);
+                            if (newAmount < 0.0000001) newAmount = "0.00000010";
+                            $("#bet_amount").val(newAmount);
+                            calculateBetProfit();
+                        } else if (onWinRadioSelection === "resettobase") {
+                            $("#bet_amount").val(baseBet);
+                            calculateBetProfit();
+                        } else {
+                            autoBetStopStatus = true;
+                            autoBetStatus = false;
+                            $("#button_autobet_start").removeClass("hide");
+                            $("#button_autobet_stop").addClass("hide");
+                            toastSuccess(
+                                "Autobet finished. Stop on loss triggered."
+                            );
+                            return;
+                        }
+                    }
+
+                    currentNumberOfBets += 1;
+
+                    if (autoBetStopStatus === true) {
+                        autoBetStatus = false;
+                        toastSuccess("Autobet stopped");
+                        return;
+                    } else {
+                        setTimeout(autobet, 1000);
+                    }
+                  }
+                }
+                $("#fair_server").val(response.message.currentServerSeedHashed);
+                $("#fair_client").val(response.message.currentClientSeed);
+                $("#fair_nonce").val(response.message.nextNonce);
+                getStats();
+                liveBet = $("#live_bet").text().substring(0, $("#live_bet").text().length-3);
+                liveProfit = $("#live_profit").text().substring(0, $("#live_profit").text().length-3);
+                $("#live_bet").html(`${(parseFloat(liveBet) + parseFloat($("#bet_amount").val().trim())).toFixed(8)}<span>BTC</span>`);
+                $("#live_profit").html(`${(parseFloat(liveProfit) + parseFloat(response.message.profit)).toFixed(8)}<span>BTC</span>`);
+                if (response.message.betStatus === "win") {
+                    playWinSound();
+                    $("#live_wins").html(parseFloat($("#live_wins").text()) + 1);
+                } else {
+                    $("#live_losses").html(parseFloat($("#live_losses").text()) + 1);
+                }
+              });
+
+              $("#chatForm").submit(function (e) {
+                e.preventDefault();
+                socket.emit("chats", $("#chatInput").val().trim());
+                $("#chatInput").val("");
+                $("#chatInput").blur();
+              });
+        }
+
+        socketFunction();
+
+    </script>
+    <!-- Main Js -->
+    <script src="js/custome.js"></script>
+    <!-- Custom Functions -->
+    <script src="js/diceweb.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/jquery-slotmachine@4.0.1/dist/jquery.slotmachine.min.css,npm/jquery-slotmachine@4.0.1/dist/jquery.slotmachine.min.css">
+    <script>
+    $(document).ready(function() {
+        $('#errorToast').toast({ delay: 4000 });
+        $('#successToast').toast({ delay: 4000 });
+        $('#warningToast').toast({ delay: 4000 });
+
+        $("#range").ionRangeSlider({
+            min: 200,
+            max: 9800,
+            from: 5000,
+            onChange: function(data) {
+                $(".roll_number").val(data.from);
+                runRollNumberChanges(data.from);
+            }
+        });
+
+        $('.irs-single').attr('data-direction', "Under");
+        mainRange = $("#range").data("ionRangeSlider");
+        $(".roll_number").val(5000);
+        runRollNumberChanges(5000);
+
+        $('.roll_swap').click(function (e) {
+            e.preventDefault();
+            let t = $('#roll_direction').text();
+            let newType = (t.includes('under')) ? 'Roll over' : 'Roll under';
+            let newTypeSlider = (t.includes('under')) ? 'Over' : 'Under';
+            $('#roll_direction').text(newType);
+            $('.irs-single').attr('data-direction', newTypeSlider);
+            $('.irs-line').toggleClass('flipped');
+            $('.irs-bar').toggleClass('flipped');
+            calculateBetPayoutAfterBetPayout();
+        });
+    });
+    </script>
+    <script src="js/jquery.rollNumber.js"></script>
+    <script>
+    function makeTimer(days, hours, minutes, seconds) {
+        const plural = days >= 2;
+        const displayDays = days >= 1;
+        const daysDisplay = displayDays ? `${days} day${plural ? "s" : ""} ` : ``;
+        $("#raceCounter").text(
+            `${daysDisplay}${pad(hours, 2)}:${pad(minutes, 2)}:${pad(seconds, 2)}`
+        );
+    }
+    let timerUpdater;
+    let updateTimer = function() {
+        let UTCCurrentTimeMS = new Date().getTime();
+        const someSundayInThePast = 1595721600000 //some Sunday
+        const microSecondsInAWeek = 1000 * 60 * 60 * 24 * 7; // second * minute * hour * day * week
+        const timeSinceLastSunday = (UTCCurrentTimeMS - someSundayInThePast) % microSecondsInAWeek;
+        let timeToNextSunday = Math.floor((604800000 - timeSinceLastSunday) / 1000);
+        // Get the rest of modulo operation and divide
+
+        var days = Math.floor(timeToNextSunday / 24 / 60 / 60);
+        var hoursLeft = Math.floor((timeToNextSunday) - (days * 86400));
+        var hours = Math.floor(hoursLeft / 3600);
+        var minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
+        var minutes = Math.floor(minutesLeft / 60);
+        var remainingSeconds = timeToNextSunday % 60;
+        makeTimer(
+            days,
+            hours,
+            minutes,
+            remainingSeconds
+        );
+    }
+    $(document).ready(function() {
+        $('#racesButton').click(function(event) {
+            event.preventDefault();
+            updateTimer();
+            timerUpdater = setInterval(updateTimer, 1000);
+            this.blur();
+            $('#raceModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+        });
+        $('#walletButton').click(function(event) {
+            event.preventDefault();
+            this.blur();
+            $('#walletModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+        });
+        $('#statsButton').click(function(event) {
+            event.preventDefault();
+            this.blur();
+            $('#statsModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+        });
+        $('#profileButton').click(function(event) {
+            event.preventDefault();
+            this.blur();
+            $('#profileModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+        });
+        $('#historyButton').click(function(event) {
+            event.preventDefault();
+            this.blur();
+            $('#historyModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+            $('#historyDeposits tr').empty();
+            $('#historyWithdrawals tr').empty();
+            $('#historyBets tr').empty();
+
+            urlDeposits = `/api/account/deposits/1`;
+            $.ajax({
+                url: urlDeposits,
+                type: "GET",
+                timeout: 10000,
+                success: function(response) {
+                    if (response.valid === false) {
+                        toastError(response.message);
+                    } else if (!response.message) {
+                        // $("#history_loading").hide();
+                        // $(".history-null").show();
+                    } else {
+                        response.message.forEach(function(deposit) {
+                            let classConfirmed;
+                            if (deposit.confirmation === "COMPLETED") {
+                                classConfirmed = "green";
+                            }
+                            $("#historyDeposits").append(`
+                                <tr>
+                                        <td>
+                                        ${deposit.date}
+                                        </td>
+                                        <td>
+                                        ${deposit.currency}
+                                        </td>
+                                        <td>
+                                        ${deposit.amount}
+                                        </td>
+                                        <td>
+                                        <a target="_blank" rel="noopener noreferrer" href="https://www.blockchain.com/btc/tx/${deposit.txid}" >${deposit.txid.slice(0, 17)}...</a>
+                                        </td>
+                                        <td>
+                                        <span class="text-${classConfirmed}">${deposit.confirmation}</span>
+                                        </td>
+                                </tr>
+                            `);
+                        });
+                        // $("#history_loading").hide();
+                        // $("#ztab2C").show();
+                    }
+                },
+                error: function(x, t, m) {
+                    if (x.status === 403) {
+                        toastError("Please login first");
+                    } else {
+                        toastError("Connection issue");
+                    }
+                },
+            });
+
+            urlWithdrawals = `/api/account/withdrawals/1`;
+            $.ajax({
+                url: urlWithdrawals,
+                type: "GET",
+                timeout: 10000,
+                success: function(response) {
+                    if (response.valid === false) {
+                        toastError(response.message);
+                    } else if (!response.message) {
+                        // $("#history_loading").hide();
+                        // $(".history-null").show();
+                    } else {
+                        response.message.forEach(function(withdrawal) {
+                            $("#historyWithdrawals").append(`
+                            <tr>
+                                <td>
+                                ${withdrawal.date}
+                                </td>
+                                <td>
+                                ${withdrawal.currency}
+                                </td>
+                                <td>
+                                ${withdrawal.amount}
+                                </td>
+                                <td>
+                                ${withdrawal.address}
+                                </td>
+                                <td>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.blockchain.com/btc/tx/${withdrawal.txid}">${withdrawal.txid.slice(0, 17)}...</a>
+                                </td>
+                            </tr>
+                        `);
+                        });
+                    }
+                },
+                error: function(x, t, m) {
+                    if (x.status === 403) {
+                        toastError("Please login first");
+                    } else {
+                        toastError("Connection issue");
+                    }
+                },
+            });
+
+            urlBets = `/api/account/bets/1`;
+            $.ajax({
+                url: urlBets,
+                type: "GET",
+                timeout: 10000,
+                success: function(response) {
+                    if (response.valid === false) {
+                        toastError(response.message);
+                    } else if (!response.message) {
+                        // $("#history_loading").hide();
+                        // $(".history-null").show();
+                    } else {
+                        let lightBackground = false;
+                        response.message.forEach(function(bet) {
+                            $("#historyBets").append(`
+                                <tr>
+                                    <td>${bet.id.split('-')[0]}...</td>
+                                    <td>${bet.date}</td>
+                                    <td>${bet.amount}</td>
+                                    <td>${bet.payout} <sup>X</sup></td>
+                                    <td><span class="text-${bet.profit > 0 ? 'green' : 'red'}">${bet.profit}<img src="images/bitcoin-icon.svg" alt="" /></td>
+                                </tr>
+                            `);
+                        });
+                    }
+                },
+                error: function(x, t, m) {
+                    if (x.status === 403) {
+                        toastError("Please login first");
+                    } else {
+                        toastError("Connection issue");
+                    }
+                },
+            });
+        });
+
+        $('#fairButton').click(function(event) {
+            event.preventDefault();
+            this.blur();
+            $('#fairModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+        });
+        $('#fairFooter').click(function(event) {
+            event.preventDefault();
+            this.blur();
+            $('#workingsModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+        });
+        $('#aboutFooter').click(function(event) {
+            event.preventDefault();
+            this.blur();
+            $('#aboutModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+        });
+        $('#privacyFooter').click(function(event) {
+            event.preventDefault();
+            this.blur();
+            $('#privacyPolicyModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+        });
+        $('#termsFooter').click(function(event) {
+            event.preventDefault();
+            this.blur();
+            $('#termsOfServiceModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+        });
+        $('.login-btn').click(function(event) {
+            event.preventDefault();
+            this.blur();
+            $('#loginModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+        });
+        $('.signup-btn').click(function(event) {
+            event.preventDefault();
+            this.blur();
+            $('#signupModal').modal({
+                fadeDuration: 100,
+                closeClass: 'modal-close'
+            });
+        });
+        $('.close').click(function() {
+            if (timerUpdater)
+                clearInterval(timerUpdater);
+        });
+        $('#profile-tab').click(function (e) {
+            e.preventDefault();
+            $('#submit-auto').removeClass('hide');
+            $('#submit-manual').addClass('hide');
+            $('#auto-left-panel').removeClass('hide');
+            $('#auto-left-panel').addClass('show');
+        });
+        $('#home-tab').click(function (e) {
+            e.preventDefault();
+            $('#submit-auto').addClass('hide');
+            $('#submit-manual').removeClass('hide');
+            $('#auto-left-panel').removeClass('show');
+            setTimeout(function() {
+            $('#auto-left-panel').addClass('hide');}, 400);
+            });
+        $('.toast .close').click(function() {
+            $("#errorToast").removeClass("toast-show");
+            $("#successToast").removeClass("toast-show");
+            $("#warningToast").removeClass("toast-show");
+        });
+        setTimeout(function() { $('.c-body').scrollTop($('.c-body')[0].scrollHeight); }, 1500);
+        $('.refreshLive').click(function(e) {
+            event.preventDefault();
+            $("#live_bet").html(`0.00000000<span>BTC</span>`);
+            $("#live_profit").html(`0.00000000<span>BTC</span>`);
+            $("#live_wins").html(0);
+            $("#live_losses").html(0);
+        });
+    });
+    </script>
+    <script>
+    $('.modal-header-menu-item').on('click', function() {
+        $(this).parent().children('.modal-header-menu-item').removeClass('active');
+        $(this).addClass('active');
+        let data_menu = $(this).data('menu')
+
+        $(this).parent().parent().parent().parent().find('.modal-title').html($(this).html())
+
+        if (data_menu == "Deposit") {
+            $("#withdrawBody").addClass("hide");
+            $("#depositBody").removeClass("hide");
+        } else if (data_menu == "Withdraw") {
+            $("#withdrawBody").removeClass("hide");
+            $("#depositBody").addClass("hide");
+        }
+    })
+
+    $('#tab-head-1').on('click', function() {
+        $('.tab-header-text').removeClass('active');
+        $('.tab-body-text').removeClass('active');
+        $('#tab-1').addClass('active');
+        $(this).addClass('active');
+    })
+
+    $('#tab-head-2').on('click', function() {
+        $('.tab-header-text').removeClass('active');
+        $('.tab-body-text').removeClass('active');
+        $('#tab-2').addClass('active');
+        $(this).addClass('active');
+    })
+
+    $('#tab-head-3').on('click', function() {
+        $('.tab-header-text').removeClass('active');
+        $('.tab-body-text').removeClass('active');
+        $('#tab-3').addClass('active');
+        $(this).addClass('active');
+    })
+    </script>
+</body>
+
+</html>
