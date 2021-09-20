@@ -63,14 +63,7 @@ function updateAllBets() {
         });
       }
     },
-    error: function (x, t, m) {
-      if (x.status === 403) {
-        // $("#my_bets_stats_login").show();
-        // $("#my_bets_stats_loading").hide();
-      } else {
-        toastError("Connection issue. Please try again.");
-      }
-    },
+   
   });
 }
 
@@ -101,14 +94,7 @@ function updateHighRollers() {
         });
       }
     },
-    error: function (x, t, m) {
-      if (x.status === 403) {
-        // $("#my_bets_stats_login").show();
-        // $("#my_bets_stats_loading").hide();
-      } else {
-        toastError("Connection issue. Please try again.");
-      }
-    },
+   
   });
 }
 
@@ -143,14 +129,7 @@ function updateMyBets() {
         // $("#my_bets_stats").show();
       }
     },
-    error: function (x, t, m) {
-      if (x.status === 403) {
-        // $("#my_bets_stats_login").show();
-        // $("#my_bets_stats_loading").hide();
-      } else {
-        toastError("Connection issue. Please try again.");
-      }
-    },
+    
   });
 }
 
@@ -207,18 +186,7 @@ $(document).ready(function () {
           getStats();
         }
       },
-      error: function (x, t, m) {
-        if (x.status === 403) {
-          $("#button_signup_login_group").removeClass("hide");
-          $("#page_check_login_loading").addClass("hide");
-          $("#modal_signup").addClass("is-active");
-          $("#button_signup_submit").removeClass("hide");
-          $("#button_signup_loading").addClass("hide");
-          $("#button_logout_loading").hide();
-        } else {
-          toastError("Connection issue. Please try again.");
-        }
-      },
+      
     });
     getBTCPrice();
 });
@@ -287,12 +255,7 @@ $("#signupForm").submit(function (e) {
         $("#signup_button_loading").addClass("hide");
         recaptcha();
       },
-      error: function (x, t, m) {
-        console.log(t);
-        toastError("Connection issue. Please try again.");
-        $("#signup_button").removeClass("hide");
-        $("#signup_button_loading").addClass("hide");
-      },
+     
     });
   } else {
     toastError(validity.message);
@@ -409,11 +372,7 @@ $("#loginForm").submit(function (e) {
       $("#login_button_loading").addClass("hide");
       recaptcha();
     },
-    error: function (x, t, m) {
-      toastError("Connection issue. Please try again.");
-      $("#login_button").removeClass("hide");
-      $("#login_button_loading").addClass("hide");
-    },
+   
   });
 });
 
@@ -445,15 +404,7 @@ $("#withdrawButton").click(function (e) {
         $("#balance").text(`BTC ${response.message.balance}`);
       }
     },
-    error: function (x, t, m) {
-      if (x.status === 403) {
-        toastError("Please sign up first");
-      } else {
-        toastError("Connection issue. Please try again.");
-      }
-      $("#withdrawButton").removeClass("hide");
-      $("#withdrawButton_loading").addClass("hide");
-    },
+    
   });
 });
 
@@ -491,16 +442,7 @@ $("#fair_submit").click(function (e) {
         $("#fair_submit").removeClass("hide");
         $("#fair_submit_loading").addClass("hide");
       },
-      error: function (x, t, m) {
-        if (x.status === 403) {
-          toastError("Please sign up first");
-          openSignUpModal();
-        } else {
-          toastError("Connection issue. Please try again.");
-        }
-        $("#fair_submit").removeClass("hide");
-        $("#fair_submit_loading").addClass("hide");
-      },
+      
     });
   } else toastError(validity.message);
 });
@@ -534,16 +476,7 @@ $("#button_chat_rain_submit").click(function (e) {
       $("#button_chat_rain_submit_loading").hide();
       $("#button_chat_rain_submit").show();
     },
-    error: function (x, t, m) {
-      if (x.status === 403) {
-        toastError("Please sign up first");
-        openSignUpModal();
-      } else {
-        toastError("Connection issue. Please try again.");
-      }
-      $("#button_chat_rain_submit_loading").hide();
-      $("#button_chat_rain_submit").show();
-    },
+   
   });
 });
 
@@ -679,9 +612,7 @@ $("#racesButton").on("click", function (e) {
         
       }
     },
-    error: function (x, t, m) {
-        toastError("Connection issue. Please try again.");
-    },
+    
   });
 });
 
@@ -723,13 +654,7 @@ $("#contest_previous_tab").on("click", function (e) {
         });
       }
     },
-    error: function (x, t, m) {
-      if (x.status === 403) {
-        toastError("Please login first");
-      } else {
-        toastError("Connection issue. Please try again.");
-      }
-    },
+    
   });
 });
 
@@ -801,13 +726,7 @@ $("#button_affiliatecontest").on("click", function (e) {
                 `);
       }
     },
-    error: function (x, t, m) {
-      if (x.status === 403) {
-        toastError("Please login first");
-      } else {
-        toastError("Connection issue. Please try again.");
-      }
-    },
+    
   });
 });
 
@@ -837,13 +756,7 @@ $("#button_affiliates").on("click", function (e) {
         );
       }
     },
-    error: function (x, t, m) {
-      if (x.status === 403) {
-        toastError("Please login first");
-      } else {
-        toastError("Connection issue. Please try again.");
-      }
-    },
+   
   });
 });
 
@@ -1323,16 +1236,7 @@ $("#profile_submit").on("click", function (e) {
         $("#profile_submit").removeClass("hide");
         $("#profile_submit_loading").addClass("hide");
       },
-      error: function (x, t, m) {
-        if (x.status === 403) {
-          toastError("Please sign up first");
-          openSignUpModal();
-        } else {
-          toastError("Connection issue. Please try again.");
-        }
-        $("#profile_submit").removeClass("hide");
-        $("#profile_submit_loading").addClass("hide");
-      },
+     
     });
   } else toastError(validity.message);
 });
@@ -1434,16 +1338,7 @@ $("#logoutButton").on("click", function (e) {
       $("#logoutButton").show();
       $("#logoutButton_loading").hide();
     },
-    error: function (x, t, m) {
-      if (x.status === 403) {
-        toastError("Please sign up first");
-        openSignUpModal();
-      } else {
-        toastError("Connection issue. Please try again.");
-      }
-      $("#button_logout").show();
-      $("#button_logout_loading").hide();
-    },
+    
   });
 });
 
@@ -1570,14 +1465,7 @@ $("#my_bets_tabs").on("click", function (e) {
         $("#my_bets_stats").show();
       }
     },
-    error: function (x, t, m) {
-      if (x.status === 403) {
-        $("#my_bets_stats_login").show();
-        $("#my_bets_stats_loading").hide();
-      } else {
-        toastError("Connection issue. Please try again.");
-      }
-    },
+    
   });
 });
 
@@ -1635,9 +1523,7 @@ $("#high_rollers_tabs").on("click", function (e) {
         $("#high_rollers_stats").show();
       }
     },
-    error: function (x, t, m) {
-      toastError("Connection issue. Please try again.");
-    },
+   
   });
 });
 
@@ -1760,9 +1646,7 @@ function investCancel(e) {
       if (x.status === 403) {
         toastError("Please sign up first");
         openSignUpModal();
-      } else {
-        toastError("Connection issue. Please try again.");
-      }
+      } 
       $(`#${e.srcElement.id}`).removeClass("hide");
       $(`#${e.srcElement.id}-loading`).addClass("hide");
     },
